@@ -30,10 +30,16 @@ export default () => (
 
 //для отрисовки дочерних элементов color    {props.children}
 //обращаемся к событию объявленному в App компонента props.onChangeTitle
+//<Car/>
 export default (props) => (
-    <div>
+    <div style={{
+        border: '1px solid #ccc',
+        marginBottom: '10px',
+    }}>
         <h3>Car name: {props.name}</h3>
         <p>Year: <strong> {props.year}</strong></p>
+        {/*по событию onChange вызывать onChangeName в App.js*/}
+        <input type='text' onChange={props.onChangeName}/>
         <button onClick={props.onChangeTitle}>Click</button>
         {props.children}
     </div>
