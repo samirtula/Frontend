@@ -44,8 +44,26 @@ class App extends Component {
     }
 
     onChangeName(name, index) {
+        const car = this.state.cars[index];
+        car.name = name;
 
-        console.log(name, index)
+        const cars = [...this.state.cars];
+        cars[index] = car;
+
+        this.setState({
+            cars:cars
+            //cars можно и такую запись в случае если ключ и значение совпадают
+        })
+    }
+
+    deleteHandler(index) {
+        const cars = [...this.state.cars];
+        cars.splice(index, 1);
+
+        this.setState({
+            cars
+        })
+
     }
 
     //при каждом изменении состояния вызывается метод рендер
@@ -85,8 +103,13 @@ class App extends Component {
                             name={car.name}
                             year={car.year}
                             onChangeTitle={this.changeTitleHandler.bind(this, car.name)}
+
+                          /*  1. функция не создает своего контекста(стрелочные функции).*/
                             onChangeName={event => this.onChangeName(event.target.value, index)}
+                           /* 2. функция имеет свой контекст, мы его связали bindom с контекстом вскго класса App*/
+                            onDelete={this.deleteHandler.bind(this, index)}
                         />
+
                     )
                 })
                     : null
