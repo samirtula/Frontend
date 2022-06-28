@@ -1,9 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
 import Radium from "radium";
 import './Car.scss'
 
 //для отрисовки дочерних элементов color    {props.children}
 //обращаемся к событию объявленному в App компонента props.onChangeTitle
+
+class Сar extends Component {
+
+}
+
 
 const Car = props => {
     const inputClasses = ['input'];
