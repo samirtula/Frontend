@@ -6,11 +6,14 @@
     <my-input
         type="text"
         v-model="post.title"
-        placeholder="Название"/>
+        placeholder="Название"
+        v-focus
+    />
     <my-input
         type="text"
         v-model="post.body"
-        placeholder="Описание"/>
+        placeholder="Описание"
+    />
     <my-button
         @click="createPost"
         style="align-self: flex-end; margin-top: 15px "
