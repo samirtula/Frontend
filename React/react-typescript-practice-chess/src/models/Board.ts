@@ -76,4 +76,20 @@ export class Board {
         new Rook(Colors.WHITE, this.getCell(0, 7));
         new Rook(Colors.WHITE, this.getCell(7, 7));
     }
+
+    public highLightCells(selectedCell: Cell | null) {
+        for (let i =0; i < this.cells.length; i++) {
+            const row = this.cells[i];
+            for (let j = 0; j < row.length; j++) {
+                const target = row[j];
+                target.available = !!selectedCell?.figure?.canMove(target);
+            }
+        }
+    }
+
+    public getCopyBoard(): Board {
+        const newBoard = new Board();
+        newBoard.cells = this.cells;
+        return newBoard;
+    }
 }

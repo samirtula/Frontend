@@ -3,6 +3,7 @@ import {Colors} from "../Colors";
 import {Cell} from "../Cell";
 import blackLogo from '../../assets/black-bishop.png'
 import whiteLogo from '../../assets/white-bishop.png'
+import {getActiveElement} from "@testing-library/user-event/dist/utils";
 
 export class Bishop extends Figure {
 
@@ -10,5 +11,17 @@ export class Bishop extends Figure {
         super(color, cell);
         this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
         this.name = FigureNames.BISHOP;
+    }
+
+    canMove(target: Cell) : boolean {
+        if(!super.canMove(target)) {
+            return false;
+        }
+
+        if (this.cell.isEmptyDiagonal(target)) {
+            return true;
+        }
+
+        return false;
     }
 }
