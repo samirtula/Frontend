@@ -16,6 +16,7 @@
     height: calc(64px * 8);
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
 }
 
 .cell {
@@ -26,10 +27,20 @@
     align-items: center;
 }
 
+.cell img {
+    width: 55px;
+    height: 55px;
+    position: relative;
+}
+
 .black {
-    background-color: deepskyblue;
+    background-color: #36597b;
 }
 
 .white {
-    background-color: #eed;
+    background-color: #b8b8a1;
+}
+
+.selected {
+    background-color: brown;
 }
