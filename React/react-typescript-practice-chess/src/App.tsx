@@ -4,6 +4,8 @@ import BoardComponent from "./components/BoardComponent";
 import {Board} from "./models/Board";
 import {Player} from "./models/Player";
 import {Colors} from "./models/Colors";
+import LostFigures from "./components/LostFigures";
+import Timer from "./components/Timer";
 
 function App() {
 
@@ -26,16 +28,24 @@ function App() {
 
    function swapPlayer() {
        setCurrentPlayer(currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer);
-       console.log(currentPlayer)
    }
 
   return (
     <div className="app">
+        <Timer currentPlayer={currentPlayer} restart={restart}/>
         <BoardComponent
             board={board}
             setBoard={setBoard}
             currentPlayer={currentPlayer}
             swapPlayer={swapPlayer}
+        />
+        <LostFigures
+            title="Черные фигуры"
+            figures={board.lostBlackFigures}
+        />
+        <LostFigures
+            title="Белые фигуры"
+            figures={board.lostWhiteFigures}
         />
     </div>
   );
